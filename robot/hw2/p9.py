@@ -1,5 +1,6 @@
 #! /usr/bin/python
 
+import matplotlib.pyplot as plt
 import csv
 import numpy as np
 
@@ -58,3 +59,78 @@ def weight(x, y):
 									fdet = det
 	return cadidate, fdet
 print(weight(0.8, 1.8))
+def draw():
+	test1 = weight(0.8, 1.8)
+	test2 = weight(2.2, 1.0)
+	test3 = weight(2.7, 1.4)
+	print(test1)
+	print(test2)
+	print(test3)
+	x = np.linspace(-1, 15, 1000)
+	y = np.linspace(-1, 15, 1000)
+	x1 = []
+	y1 = []
+	x2 = []
+	y2 = []
+	x3 = []
+	y3 = []
+	for i in range(0, 50):
+		n1 = test1[0][0]
+		n2 = test1[0][1]
+		n3 = test1[0][2]
+
+#		print(n1, n2, n3)
+#		x1[].append(test[])
+		xx11 = float(data[n1 * 2][i])
+		xx22 = float(data[n2 * 2][i]) - xx11
+		xx33 = float(data[n3 * 2][i]) - xx11
+		x1.append(xx11 + xx22 * test1[1][1] + xx33 * test1[1][2])
+		yx11 = float(data[n1 * 2 + 1][i])
+		yx22 = float(data[n2 * 2 +1 ][i]) - yx11
+		yx33 = float(data[n3 * 2 + 1][i]) - yx11
+
+		y1.append(yx11 + yx22 * test1[1][1] + yx33 * test1[1][2])
+
+
+		n1 = test2[0][0]
+		n2 = test2[0][1]
+		n3 = test2[0][2]
+
+#		print(n1, n2, n3)
+#		x1[].append(test[])
+		xx11 = float(data[n1 * 2][i])
+		xx22 = float(data[n2 * 2][i]) - xx11
+		xx33 = float(data[n3 * 2][i]) - xx11
+		x2.append(xx11 + xx22 * test2[1][1] + xx33 * test2[1][2])
+		yx11 = float(data[n1 * 2 + 1][i])
+		yx22 = float(data[n2 * 2 +1 ][i]) - yx11
+		yx33 = float(data[n3 * 2 + 1][i]) - yx11
+
+		y2.append(yx11 + yx22 * test2[1][1] + yx33 * test2[1][2])
+		
+		n1 = test3[0][0]
+		n2 = test3[0][1]
+		n3 = test3[0][2]
+
+#		print(n1, n2, n3)
+#		x1[].append(test[])
+		xx11 = float(data[n1 * 2][i])
+		xx22 = float(data[n2 * 2][i]) - xx11
+		xx33 = float(data[n3 * 2][i]) - xx11
+		x3.append(xx11 + xx22 * test3[1][1] + xx33 * test3[1][2])
+		yx11 = float(data[n1 * 2 + 1][i])
+		yx22 = float(data[n2 * 2 +1 ][i]) - yx11
+		yx33 = float(data[n3 * 2 + 1][i]) - yx11
+
+		y3.append(yx11 + yx22 * test3[1][1] + yx33 * test3[1][2])
+	
+	X, Y = np.meshgrid(x,y)
+	F = 1 * (X - 5)**2 + 1 * (Y - 5)**2 - 2.25# * X * Y + X - Y
+	plt.contour(X,Y,F,[0])
+	plt.plot(x1, y1)
+	plt.plot(x2, y2)
+	plt.plot(x3, y3)
+	plt.show()
+
+
+draw()
