@@ -74,6 +74,25 @@ def draw():
 	y2 = []
 	x3 = []
 	y3 = []
+	px1 = []
+	px2 = []
+	px3 = []
+	px4 = []
+	px5 = []
+	px6 = []
+	px7 = []
+	px8 = []
+	px9 = []
+	py1 = []
+	py2 = []
+	py3 = []
+	py4 = []
+	py5 = []
+	py6 = []
+	py7 = []
+	py8 = []
+	py9 = []
+
 	for i in range(0, 50):
 		n1 = test1[0][0]
 		n2 = test1[0][1]
@@ -91,7 +110,12 @@ def draw():
 
 		y1.append(yx11 + yx22 * test1[1][1] + yx33 * test1[1][2])
 
-
+		py1.append(float(data[n1 * 2 + 1][i]))
+		px1.append(float(data[n1 * 2][i]))
+		px2.append(float(data[n2 * 2][i]))
+		px3.append(float(data[n3 * 2][i]))
+		py2.append(float(data[n2 * 2 + 1][i]))
+		py3.append(float(data[n3 * 2 + 1][i]))
 		n1 = test2[0][0]
 		n2 = test2[0][1]
 		n3 = test2[0][2]
@@ -105,12 +129,24 @@ def draw():
 		yx11 = float(data[n1 * 2 + 1][i])
 		yx22 = float(data[n2 * 2 +1 ][i]) - yx11
 		yx33 = float(data[n3 * 2 + 1][i]) - yx11
+		py4.append(float(data[n1 * 2 + 1][i]))
+		px4.append(float(data[n1 * 2][i]))
+		px5.append(float(data[n2 * 2][i]))
+		px6.append(float(data[n3 * 2][i]))
+		py5.append(float(data[n2 * 2 + 1][i]))
+		py6.append(float(data[n3 * 2 + 1][i]))
 
 		y2.append(yx11 + yx22 * test2[1][1] + yx33 * test2[1][2])
 		
 		n1 = test3[0][0]
 		n2 = test3[0][1]
 		n3 = test3[0][2]
+		py7.append(float(data[n1 * 2 + 1][i]))
+		px7.append(float(data[n1 * 2][i]))
+		px8.append(float(data[n2 * 2][i]))
+		px9.append(float(data[n3 * 2][i]))
+		py8.append(float(data[n2 * 2 + 1][i]))
+		py9.append(float(data[n3 * 2 + 1][i]))
 
 #		print(n1, n2, n3)
 #		x1[].append(test[])
@@ -126,11 +162,33 @@ def draw():
 	
 	X, Y = np.meshgrid(x,y)
 	F = 1 * (X - 5)**2 + 1 * (Y - 5)**2 - 2.25# * X * Y + X - Y
+	f1 = plt.figure(1)
+
 	plt.contour(X,Y,F,[0])
 	plt.plot(x1, y1)
+	plt.plot(px1, py1)
+	plt.plot(px2, py2)
+	plt.plot(px3, py3)
+#	plt.plot(x2, y2)
+#	plt.plot(x3, y3)
+
+	f1.show()
+	f2 = plt.figure(2)
 	plt.plot(x2, y2)
+	plt.contour(X,Y,F,[0])
+	plt.plot(px4, py4)
+	plt.plot(px5, py5)
+	plt.plot(px6, py6)
+	f3 = plt.figure(3)
 	plt.plot(x3, y3)
-	plt.show()
+	plt.contour(X,Y,F,[0])
+	plt.plot(px7, py7)
+	plt.plot(px8, py8)
+	f3.show()
+	plt.plot(px6, py6)
+	f2.show()
+	f2.show()
+	raw_input()
 
 
 draw()
